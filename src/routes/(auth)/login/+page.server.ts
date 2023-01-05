@@ -4,7 +4,7 @@ import type { Actions } from './$types';
 import { loginSchema } from './validation';
 
 export const actions: Actions = {
-	default: async ({ request }) => {
+	default: async ({ request, url }) => {
 		const formData = await request.formData();
 		const identity = formData.get('identity')?.toString();
 		const password = formData.get('password')?.toString();
@@ -22,6 +22,6 @@ export const actions: Actions = {
 			.collection('users')
 			.authWithPassword(parsed.data.identity, parsed.data.password);
 
-		return redirect(307, '/');
+		return redirect(307, url.searchParams.get('_next') || '/');
 	}
 };

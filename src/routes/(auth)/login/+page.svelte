@@ -6,7 +6,15 @@
 
 <main>
 	<div class="max-w-sm mx-auto my-10">
-		<h3 class="text-center font-bold font-mono text-2xl">Welcome Back</h3>
+		<h3 class="text-center font-extrabold font-serif text-3xl">
+			Welcome Back!
+		</h3>
+		<p class="text-center text-slate-400 text-sm">
+			Do not have an account yet? <a
+				href="/signup"
+				class="text-indigo-400 hover:underline">Create account</a
+			>
+		</p>
 
 		<form method="POST" class="rounded-md shadow-md px-6 py-8 mt-6">
 			<section>

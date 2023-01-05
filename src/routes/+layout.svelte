@@ -1,5 +1,8 @@
 <script>
 	import '../app.postcss';
+	import Notification from './notification.svelte';
 </script>
 
-<slot />
+<Notification>
+	<slot />
+</Notification>
