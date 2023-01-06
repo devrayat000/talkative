@@ -1,7 +1,6 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import type { ActionData } from './$types';
-
-	// TODO: handle token in loader
 
 	export let form: ActionData;
 </script>
@@ -16,6 +15,11 @@
 		</p>
 
 		<form method="POST" class="rounded-md shadow-md px-6 py-8 mt-6">
+			<input
+				type="hidden"
+				name="passwordResetToken"
+				value={$page.url.searchParams.get('passwordResetToken')}
+			/>
 			<section class="mt-4">
 				<label for="password" class="block font-medium">Password</label>
 				<input
