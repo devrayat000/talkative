@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { forgotpasswordSchema } from '../forgot-password/validation';
+import { resetpasswordBaseSchema } from '../reset-password/validation';
 
 export const signupSchema = z
 	.object({
@@ -6,18 +8,10 @@ export const signupSchema = z
 			.string({ required_error: 'Name is required!' })
 			.trim()
 			.min(6, 'Name too small!')
-			.max(64, 'Name too large!'),
-		email: z
-			.string({ required_error: 'Email is required!' })
-			.trim()
-			.min(1, 'Email is required!')
-			.email('Invalid email!'),
-		password: z
-			.string({ required_error: 'Password is required!' })
-			.min(8, 'Password too small!')
-			.max(32, 'Password too large!'),
-		passwordConfirm: z.string()
+			.max(64, 'Name too large!')
 	})
+	.merge(forgotpasswordSchema)
+	.merge(resetpasswordBaseSchema)
 	.refine((arg) => arg.password === arg.passwordConfirm, {
 		path: ['passwordConfirm'],
 		message: 'Passwords did not match!'
