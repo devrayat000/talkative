@@ -62,13 +62,9 @@
 			</section>
 
 			<section class="mt-5 flex items-center justify-between">
-				<a href="/forgot-password" class="text-sm text-indigo-400 group"
-					>&larr; <span class="group-hover:underline">Back to login page</span
-					></a
-				>
 				<button
 					type="submit"
-					class="bg-indigo-500 hover:bg-indigo-400 transition-colors rounded px-6 py-2 text-white font-medium"
+					class="w-full bg-indigo-500 hover:bg-indigo-400 transition-colors rounded px-6 py-2 text-white font-medium"
 					>Reset password</button
 				>
 			</section>

@@ -5,7 +5,7 @@ import { resetpasswordSchema } from './validation';
 
 export const load: PageServerLoad = async ({ url }) => {
 	if (!url.searchParams.has('passwordResetToken')) {
-		return redirect(302, '/forgot-password');
+		throw redirect(302, '/forgot-password');
 	}
 	return { success: true };
 };
@@ -40,7 +40,7 @@ export const actions: Actions = {
 			);
 
 		if (success) {
-			return redirect(303, '/login');
+			throw redirect(303, '/login');
 		}
 
 		return { success };

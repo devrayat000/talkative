@@ -46,7 +46,7 @@
 			</section>
 
 			<section class="mt-5 flex items-center justify-between">
-				<a href="/forgot-password" class="text-sm text-indigo-400 group"
+				<a href="/login" class="text-sm text-indigo-400 group"
 					>&larr; <span class="group-hover:underline">Back to login page</span
 					></a
 				>

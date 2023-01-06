@@ -22,7 +22,7 @@
 		</h3>
 		<p class="text-center text-slate-400 text-sm">
 			Already have an account? <a
-				href="/signup"
+				href="/login"
 				class="text-indigo-400 hover:underline">Log In</a
 			>
 		</p>

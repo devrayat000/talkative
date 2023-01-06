@@ -22,6 +22,6 @@ export const actions: Actions = {
 			.collection('users')
 			.authWithPassword(parsed.data.identity, parsed.data.password);
 
-		return redirect(307, url.searchParams.get('_next') || '/');
+		throw redirect(307, url.searchParams.get('_next') || '/');
 	}
 };

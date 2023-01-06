@@ -15,7 +15,7 @@
 	{#each $notificationStore as notification (notification.id)}
 		<div
 			role="alertdialog"
-			class="fixed bottom-3 right-3"
+			class="fixed bottom-3 right-3 max-w-sm"
 			use:portal={document.body}
 			transition:fly={{ x: 200, easing: sineInOut, duration: 250 }}
 			on:introstart={notification.onOpen}
