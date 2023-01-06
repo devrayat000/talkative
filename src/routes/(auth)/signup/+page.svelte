@@ -4,17 +4,14 @@
 
 	export let form: ActionData;
 
-	function show() {
-		showNotification({
-			title: 'Demo Notification',
-			message: 'This is a demo notification for testing purposes only.',
-			onOpen() {
-				console.log('openned');
-			},
-			onClose() {
-				console.log('closed');
-			}
-		});
+	$: {
+		if (form?.success) {
+			showNotification({
+				title: 'Successful signup.',
+				message:
+					'Your account was successfully created. Check your email to verify your account.'
+			});
+		}
 	}
 </script>
 
@@ -31,9 +28,8 @@
 		</p>
 
 		<form method="POST" class="rounded-md shadow-md px-6 py-8 mt-6">
-			<button type="button" on:click={show}>Click</button>
 			<section>
-				<label for="name" class="block">Full Name</label>
+				<label for="name" class="block font-medium">Full Name</label>
 				<input
 					type="text"
 					name="name"
@@ -53,7 +49,7 @@
 				{/if}
 			</section>
 			<section class="mt-4">
-				<label for="email" class="block">Email</label>
+				<label for="email" class="block font-medium">Email</label>
 				<input
 					type="text"
 					name="email"
@@ -73,7 +69,7 @@
 				{/if}
 			</section>
 			<section class="mt-4">
-				<label for="password" class="block">Password</label>
+				<label for="password" class="block font-medium">Password</label>
 				<input
 					type="password"
 					name="password"
@@ -92,7 +88,9 @@
 				{/if}
 			</section>
 			<section class="mt-4">
-				<label for="passwordConfirm" class="block">Confirm Password</label>
+				<label for="passwordConfirm" class="block font-medium"
+					>Confirm Password</label
+				>
 				<input
 					type="password"
 					name="passwordConfirm"

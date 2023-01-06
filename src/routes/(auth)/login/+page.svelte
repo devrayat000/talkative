@@ -18,7 +18,8 @@
 
 		<form method="POST" class="rounded-md shadow-md px-6 py-8 mt-6">
 			<section>
-				<label for="identity" class="block">Username or Email</label>
+				<label for="identity" class="block font-medium">Username or Email</label
+				>
 				<input
 					type="text"
 					name="identity"
@@ -38,7 +39,7 @@
 				{/if}
 			</section>
 			<section class="mt-4">
-				<label for="password" class="block">Password</label>
+				<label for="password" class="block font-medium">Password</label>
 				<input
 					type="password"
 					name="password"
