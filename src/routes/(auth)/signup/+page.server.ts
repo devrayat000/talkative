@@ -2,9 +2,10 @@ import client from '$lib/pocketbase/client';
 import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import { signupSchema } from './validation';
+import { forgotpasswordSchema } from '../forgot-password/validation';
 
 export const actions: Actions = {
-	default: async ({ request }) => {
+	register: async ({ request }) => {
 		const formData = await request.formData();
 
 		const name = formData.get('name')?.toString();
@@ -37,6 +38,43 @@ export const actions: Actions = {
 			.collection('users')
 			.requestVerification(parsed.data.email);
 
-		return { success };
+		return { success, email: parsed.data.email };
+	},
+	verify: async ({ request }) => {
+		const formData = await request.formData();
+
+		const email = formData.get('email')?.toString();
+
+		const parsed = forgotpasswordSchema.safeParse({
+			email
+		});
+
+		if (!parsed.success) {
+			return fail<{
+				formErrors: string[];
+				fieldErrors: {
+					passwordConfirm?: string[] | undefined;
+					name?: string[] | undefined;
+					email?: string[] | undefined;
+					password?: string[] | undefined;
+				};
+				name: string | undefined;
+				email: string | undefined;
+				password: string | undefined;
+				passwordConfirm: string | undefined;
+			}>(400, {
+				email,
+				name: undefined,
+				password: undefined,
+				passwordConfirm: undefined,
+				...parsed.error.flatten()
+			});
+		}
+
+		const success = await client
+			.collection('users')
+			.requestVerification(parsed.data.email);
+
+		return { success, email: parsed.data.email };
 	}
 };
