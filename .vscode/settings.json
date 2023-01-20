@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:talkative}/pb/pb_data/data.db",
+            "name": "Talkative"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

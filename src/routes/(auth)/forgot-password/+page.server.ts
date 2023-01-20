@@ -18,6 +18,6 @@ export const actions: Actions = {
 			.collection('users')
 			.requestPasswordReset(parsed.data.email);
 
-		return { success };
+		return { success, email: parsed.data.email };
 	}
 };
